@@ -21,6 +21,11 @@ const server = http.createServer((req, res) => {
     return res.end(JSON.stringify({ status: "ok", Date: new Date().toISOString() }),
     );
   }
+  if(req.method === "POST" && req.url === "/eco"){
+    res.writeHead(201);
+    req.on("data", (pedaco) => console.log(pedaco.toString()));
+    return res.end(JSON.stringify({status: res.statusCode}))
+  }
   res.writeHead(404);
   res.end(JSON.stringify({ erro: "Rota não encontrada" }));
 });

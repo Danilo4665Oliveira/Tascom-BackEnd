@@ -7,16 +7,18 @@ const server = http.createServer((req, res) => {
 
   if (req.method === "GET" && req.url === "/") {
     res.writeHead(200);
+    console.log(`Método:${req.method}, URL: http://localhost:${PORT}${req.url}, Status: ${res.statusCode}`)
     return res.end(JSON.stringify({ mensagem: "Olá, back-end!" }));
   }
   if (req.method === "GET" && req.url === "/status") {
     res.writeHead(200);
+    console.log(`Método:${req.method}, URL: http://localhost:${PORT}${req.url}, Status: ${res.statusCode}`)
     return res.end(JSON.stringify({ status: "ok", uptime: process.uptime() }));
   }
   if (req.method === "GET" && req.url === "/hora") {
     res.writeHead(200);
-    return res.end(
-      JSON.stringify({ status: "ok", Date: new Date().toISOString() }),
+    console.log(`Método:${req.method}, URL: http://localhost:${PORT}${req.url}, Status: ${res.statusCode}`)
+    return res.end(JSON.stringify({ status: "ok", Date: new Date().toISOString() }),
     );
   }
   res.writeHead(404);

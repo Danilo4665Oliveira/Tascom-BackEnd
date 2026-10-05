@@ -3,7 +3,7 @@ const PORT = 3000;
 
 const server = http.createServer((req, res) => {
   res.setHeader("Content-Type", "application/json");
-  const d = new Date;
+  // const d = new Date().toISOString();
 
   if (req.method === "GET" && req.url === "/") {
     res.writeHead(200);
@@ -15,7 +15,9 @@ const server = http.createServer((req, res) => {
   }
   if (req.method === "GET" && req.url === "/hora") {
     res.writeHead(200);
-    return res.end(JSON.stringify({ status: "ok", Date: d.toDateString() }));
+    return res.end(
+      JSON.stringify({ status: "ok", Date: new Date().toISOString() }),
+    );
   }
   res.writeHead(404);
   res.end(JSON.stringify({ erro: "Rota não encontrada" }));

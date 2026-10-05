@@ -26,6 +26,10 @@ const server = http.createServer((req, res) => {
     req.on("data", (pedaco) => console.log(pedaco.toString()));
     return res.end(JSON.stringify({status: res.statusCode}))
   }
+  if(req.method === "POST" && req.url === "/status"){
+    res.writeHead(405)
+    return res.end(JSON.stringify({status: res.statusMessage}))
+  }
   res.writeHead(404);
   res.end(JSON.stringify({ erro: "Rota não encontrada" }));
 });
